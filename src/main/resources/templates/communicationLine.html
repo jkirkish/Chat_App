@@ -6,8 +6,8 @@
 		<link rel="stylesheet" href="/css/communicationLine.css"/>
 		<script th:inline="javascript">
 		    alert("Please be respectful in the chatBox!!")
-		    const channelId = /*[[${communicationLine.channelId}]]*/null;
-			const user = sessionStorage.getItem("user")
+		    let channelId = /*[[${communicationLine.channelId}]]*/null;
+			let user = sessionStorage.getItem("user")
 			switch(user) {
 			case null:
 				window.location.href = '/welcome'
@@ -16,11 +16,6 @@
 				  user = JSON.parse(sessionStorage.getItem("user"))  
 			}
 
-			if (user == null) { 
-				window.location.href = '/welcome'
-			} else {
-				
-			}
 		/*]]>*/
 		</script>
 	</head>
