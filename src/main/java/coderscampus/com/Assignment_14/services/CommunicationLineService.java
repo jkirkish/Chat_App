@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import coderscampus.com.Assignment_14.dto.CommunicationLine;
+import coderscampus.com.Assignment_14.repository.CommunicationLineRepository;
+
 
 
 
@@ -13,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class CommunicationLineService {
 	
 	@Autowired
-	private communicationLineRepository channelRepo;
+	private CommunicationLineRepository channelRepo;
 	
 	public CommunicationLine findChannelById(Long channelId) {
 		return channelRepo.findById(channelId).orElse(new CommunicationLine());

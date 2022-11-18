@@ -1,6 +1,6 @@
 package coderscampus.com.Assignment_14.repository;
 
-public class TextLineRepository {
+
 	import java.util.HashMap;
 	import java.util.List;
 	import java.util.Map;
@@ -8,11 +8,13 @@ public class TextLineRepository {
 
 	import org.springframework.stereotype.Component;
 
+import coderscampus.com.Assignment_14.dto.TextLine;
+
 
 
 
 	@Component
-	public class textLineRepository {
+	public class TextLineRepository {
 		private Map<Long, List<TextLine>> messages = new HashMap<>();
 		
 		public Optional<List<TextLine>> findMessagesByChannel (Long channelId) {
@@ -24,4 +26,4 @@ public class TextLineRepository {
 			messages.put(channelId, messagesByChannel);
 		}
 	}
-}
+
