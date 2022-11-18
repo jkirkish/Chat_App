@@ -9,10 +9,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.coderscampus.Assignment14.dto.CommunicationLine;
-import com.coderscampus.Assignment14.dto.TextLine;
-import com.coderscampus.Assignment14.services.CommunicationLineService;
-import com.coderscampus.Assignment14.services.Communications;
+import coderscampus.com.Assignment_14.dto.CommunicationLine;
+import coderscampus.com.Assignment_14.dto.TextLine;
+import coderscampus.com.Assignment_14.services.CommunicationLineService;
+import coderscampus.com.Assignment_14.services.Communications;
+
+
 
 
 @Controller

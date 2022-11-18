@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.coderscampus.Assignment14.dto.TextLine;
-import com.coderscampus.Assignment14.services.Communications;
+import coderscampus.com.Assignment_14.dto.TextLine;
+import coderscampus.com.Assignment_14.services.Communications;
+
+
 
 
 

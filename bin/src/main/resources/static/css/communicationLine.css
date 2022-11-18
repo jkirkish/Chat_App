@@ -1,0 +1,12 @@
+.communication-container {
+    border: 5px dotted;
+    border-radius: 15px;
+    border-color: blue;
+}
+.timestamp {
+    font-weight: normal;
+    font-family: Arial, sans-serif;
+    font-style: italic;
+    
+    
+}
