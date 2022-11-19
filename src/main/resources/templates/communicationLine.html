@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 	<head>
-	<!-- https://idratherbewriting.com/events-and-listeners-javascript -->
+	
 		<title th:text="${communicationLine.name}"></title>
 		<script src="https://kit.fontawesome.com/02dccec1f3.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="/css/communicationLine.css"/>
 		<script th:inline="javascript">
-		    alert("Please be respectful in the chatBox!!")
+		   
 		    let channelId = /*[[${communicationLine.channelId}]]*/null;
 			let user = sessionStorage.getItem("user")
 			switch(user) {
@@ -24,7 +24,10 @@
 		<div class="header">
 		<h2><i class="fas fa-cloud" style="font-size:48px;color:red;"></i>BOOTCAMP CHANNEL FOR WAANNA BE CODERS!!<i class="fas fa-cloud" style="font-size:48px;color:red;"></i></h2>
 		</div>
-		<div class="communication-container">
+		<div>
+			<h3>CHAT BOX</h3>
+		</div>
+		<div class="communication-container" >
 		  <div th:each="message : ${messages}" th:inline="text">
 		  	<div class="timestamp">[[${message.user.name}]]: </div>
 		  	<div class="message">[[${message.text}]]</div>
@@ -32,8 +35,11 @@
 		  	<div class="channelId">[[${message.channelId}]]</div>
 		  </div>
 		</div>
+		<div>
+			<h3>Enter Text Below:</h3>
+		</div>
 		<div class="communication-box">
-			<textarea rows="5" cols="42" id="messageBox"></textarea>
+			<textarea  placeholder="Text here..." rows="5" cols="42" id="messageBox"></textarea>
 		</div>
 		<script type="text/javascript" src="/js/communicationLine.js"></script>
 	</body>

@@ -12,8 +12,6 @@ import coderscampus.com.Assignment_14.dto.TextLine;
 import coderscampus.com.Assignment_14.repository.CommunicationLineRepository;
 import coderscampus.com.Assignment_14.repository.TextLineRepository;
 
-;
-
 
 
 @Service
@@ -23,8 +21,8 @@ public class Communications {
 	private TextLineRepository textLineRepo;
 	@Autowired
 	private CommunicationLineRepository communicationRepo;
-	
-	public List<TextLine> getCommunicationsByLine (Long channelId) {
+
+	public List<TextLine> getCommunicationsByLine(Long channelId) {
 		return textLineRepo.findMessagesByChannel(channelId).orElse(new ArrayList<>());
 	}
 
