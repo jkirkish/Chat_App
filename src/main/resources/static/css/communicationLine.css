@@ -1,3 +1,4 @@
+
 .communication-container {
     border: 5px dotted;
     border-radius: 15px;
@@ -9,4 +10,12 @@
     font-style: italic;
     
     
+}
+.header {
+	 text-shadow: 2px 2px red;
+	 text-align: center;
+	 text-decoration: underline;
+	 color: purple;
+	 font-family: "Lucida Console", "Courier New", monospace;
+	 
 }

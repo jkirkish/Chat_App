@@ -3,6 +3,7 @@
 	<head>
 	<!-- https://idratherbewriting.com/events-and-listeners-javascript -->
 		<title th:text="${communicationLine.name}"></title>
+		<script src="https://kit.fontawesome.com/02dccec1f3.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="/css/communicationLine.css"/>
 		<script th:inline="javascript">
 		    alert("Please be respectful in the chatBox!!")
@@ -20,10 +21,15 @@
 		</script>
 	</head>
 	<body>
+		<div class="header">
+		<h2><i class="fas fa-cloud" style="font-size:48px;color:red;"></i>BOOTCAMP CHANNEL FOR WAANNA BE CODERS!!<i class="fas fa-cloud" style="font-size:48px;color:red;"></i></h2>
+		</div>
 		<div class="communication-container">
 		  <div th:each="message : ${messages}" th:inline="text">
 		  	<div class="timestamp">[[${message.user.name}]]: </div>
 		  	<div class="message">[[${message.text}]]</div>
+		  	<div class="date">[[${message.createdDate}]]</div>
+		  	<div class="channelId">[[${message.channelId}]]</div>
 		  </div>
 		</div>
 		<div class="communication-box">

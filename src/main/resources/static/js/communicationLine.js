@@ -1,4 +1,5 @@
-var textBox = document.querySelector("#messageBox")
+//var textBox = document.querySelector("#messageBox")
+let textBox = document.getElementById('messageBox')
 setInterval(retrieveMessages, 500)
 textBox.addEventListener('keyup', (e) => {
     if (e.keyCode === 13) {
@@ -32,7 +33,9 @@ function retrieveMessages () {
             messageContainer.innerHTML += `<div>
               <span class="timestamp">${message.user.name}: </span>
               <span class="message">${message.text}</span>
+              <span class="message">:{${message.createdDate}}</span>
+               <span class="message">${message.channelId}</span>
             </div>`
         })
     })
-}
+}setInterval(retrieveMessages, 500)
