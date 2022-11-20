@@ -1,48 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 	<head>
-		<style>
-			table, th, td {
-					border: 1px solid black;
-						}
-		</style>
-<title>Pick Your Channel</title>
-		<script type="text/javascript">
-			let user = sessionStorage.getItem("user")
-			
-			switch(user){
-			case null:
-				let name = prompt("Hello Dude, Can I get your name please?", "Name right here")
-				 
-				while (name === '' || name == null) {
-					name = prompt("Hello Dude, Please tell me your name?", "Name right here")
-				}
-				alert("Hello " + name + ", Please be respectful in the chatBox!!")
-				fetch('/users', {
-					method: 'POST',
-					body: name
-				}).then(response => response.json())
-				.then(user => {
-					sessionStorage.setItem('user', JSON.stringify(user));
-				})
-				
-				break;
-			default:
-				user = JSON.parse(sessionStorage.getItem("user"))
-				console.log(user)
-			}
-			
-		</script>
+		<title>Pick Your Channel</title>
+		<link rel="stylesheet" href="/css/welcome.css"/>
 	</head>
 	<body>
-		<h2>Choose the Channel You Desire</h2>
+		<div>
+			<h2>Choose the Channel You Desire</h2>
+		</div>
 		<div th:each="communicationLine : ${commLines}">
 		<table>
 			<tr>
 				<td><a th:href="@{/commLines/{channelId}(channelId=${communicationLine.channelId})}" th:text="${communicationLine.channelId}"></a></td>
-				
 			</tr>
 		</table>	
 		</div>
+		
+		<script type="text/javascript" src="/js/welcome.js"></script>
 	</body>
 </html>
