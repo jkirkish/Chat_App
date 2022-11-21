@@ -1,10 +1,10 @@
 var submitBtn = document.querySelector("#submitBtn")
-console.log("submitBtn is: ")
-console.log(submitBtn)
+var username = document.querySelector("#username")
 
 let users = []
 //function injected in the addEventlistener to make less lines of code
 //https://idratherbewriting.com/events-and-listeners-javascript/
+//https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 /*events and listeners
 onload //when the page loads
 onclick //when a user clicks something
@@ -27,11 +27,18 @@ submitBtn.addEventListener('click', ()=>{
 		users.push(user);
 	}	
 })
-
+username.addEventListener('blur', () => {
+	var username = document.querySelector("#username")
+	var password = document.querySelector("#password")
+	
+	fetch(`http://localhost:8080/users/exists?username=${username.value}&password=${password.value}`)
+		.then((response) => response.json())
+		.then((data) => {
+			console.log(data)
+		})
+})
 	
 /*
 th:field="${user.username}"/> will already have an id
 */
-
-
 
