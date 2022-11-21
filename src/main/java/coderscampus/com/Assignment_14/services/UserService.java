@@ -21,5 +21,9 @@ public class UserService {
 		user.setName(name);
 		return userRepo.save(user);
 	}
+	
+	public User save(User user) {
+		return userRepo.save(user);
+	}
 }
 

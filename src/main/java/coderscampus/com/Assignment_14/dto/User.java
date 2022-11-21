@@ -1,13 +1,21 @@
 package coderscampus.com.Assignment_14.dto;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-
+@Entity
+@Table(name = "users")
 public class User implements Comparable<User> {
 	private Long id;
 	private String name;
 	private String username;
 	private String password;
 	
+	@Column(unique = true)
 	public String getUsername() {
 		return username;
 	}
@@ -20,6 +28,7 @@ public class User implements Comparable<User> {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
 	}
