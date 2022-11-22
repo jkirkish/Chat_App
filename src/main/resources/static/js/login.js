@@ -1,5 +1,5 @@
 var submitBtn = document.querySelector("#submitBtn")
-var username = document.querySelector("#username")
+
 
 let users = []
 //function injected in the addEventlistener to make less lines of code
@@ -27,18 +27,27 @@ submitBtn.addEventListener('click', ()=>{
 		users.push(user);
 	}	
 })
+
 username.addEventListener('blur', () => {
-	var username = document.querySelector("#username")
-	var password = document.querySelector("#password")
+	let username = document.querySelector("#username")
+	let password = document.querySelector("#password")
 	
-	fetch(`http://localhost:8080/users/exists?username=${username.value}&password=${password.value}`)
+	var user = {
+		"username":username.value,
+		"password":password.value
+		
+	}
+	
+	fetch(`http://localhost:8080/users/exists`,{
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(user)
+		})
 		.then((response) => response.json())
 		.then((data) => {
 			console.log(data)
 		})
 })
 	
-/*
-th:field="${user.username}"/> will already have an id
-*/
-
