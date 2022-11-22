@@ -20,13 +20,17 @@ public class LoginController {
 	
 	
 	@GetMapping("/login/{id}")
-	public String getLogin(ModelMap model,@PathVariable Long id) {
+	public String getLogin(ModelMap model,@PathVariable Long id, @PathVariable String username,@PathVariable String password) {
 		User user = userService.findById(id);
 		model.put("users", Arrays.asList(user));
 		model.put("user", user);
 		String url = "";
-		
-		return "redirect:/welcome";
+		if(user.getUsername().equalsIgnoreCase(username) && user.getPassword().equals(password))
+		url = "redirect:/welcome";
+		else {
+			url ="redirect:/login";
+		}
+		return url;
 	}
 	
 }
