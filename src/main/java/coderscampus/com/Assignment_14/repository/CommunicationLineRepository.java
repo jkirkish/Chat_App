@@ -28,4 +28,6 @@ public class CommunicationLineRepository {
 	public List<CommunicationLine> findAll() {
 		return channels;
 	}
+
+	
 }

@@ -20,10 +20,10 @@ usernameTextbox.addEventListener('blur', () => {
 			console.log("username already exists")
 			usernameTextbox.focus()
 			usernameTextbox.select()
-		    	showErrorAnimation().then((message) => {
+		    	showErrorAnimation().then((message2) => {
 				// animation is completed at this point
 				console.log("We're now in the callback function")
-				console.log(message)
+				console.log(message2)
 				usernameTextbox.style.backgroundColor = 'rgb(255,255,255)'
 			})
 		}

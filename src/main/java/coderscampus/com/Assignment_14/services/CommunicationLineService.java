@@ -22,4 +22,5 @@ public class CommunicationLineService {
 	public List<CommunicationLine> findAll() {
 		return channelRepo.findAll();
 	}
+
 }
