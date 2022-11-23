@@ -6,6 +6,8 @@
 	<body>
 	<h2>Sign In Below</h2>
 	<form action="" method="post">
+	
+	
 	<div>
 		Username:<input type="text" th:field="${user.username}"/>
 	</div>
@@ -13,8 +15,12 @@
 		Password:<input type="password" th:field="${user.password}"/>
 	</div>
 	<div>
-		 <button type="button" id="submitBtn">SubmitYourName</button><!-- Push this button so javascript puts your name in the session chat -->
-	     <input type="submit" value="SubmitFormToLogin"><!-- Push this button to submit the form to check your username and password against the database -->
+		<button type="button" id="submitBtn">SubmitYourName</button><p>Push this button once so alert Box shows up</p><!-- Push this button so javascript puts your name in the session chat -->
+		
+	</div>
+	<div>
+	     <input type="submit" value="SubmitFormToLogin"><p>Push this button second to log you in and take you to the welcome screen</p><!-- Push this button to submit the form to check your username and password against the database -->
+		
 	</div>
 	</form>
 		<script type="text/javascript" src="/js/login.js"></script>

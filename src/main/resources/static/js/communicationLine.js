@@ -1,15 +1,23 @@
-let textBox = document.getElementById('messageBox')
 
+
+startMessaging().then((message1) => {
+	console.log("Message executed!")
+	console.log(message1)
+	
+})
+function startMessaging(){
+	return new Promise((resolve,reject)=> {
+var textBox = document.getElementById('messageBox')	
 textBox.addEventListener('keyup', (e) => {
-    if (e.keyCode === 13) {
-        let message = {
+	switch(e.keyCode){
+		case 13:
+		        let message = {
                 "text": textBox.value,
                 "channelId": channelId,
                 "user": user,
                 "createdDate": new Date()
         }
         let messageText = textBox.value
-        console.log(`Send message ${messageText}`)
         textBox.value = ''
         fetch('/messages', {
             method: 'POST',
@@ -19,8 +27,14 @@ textBox.addEventListener('keyup', (e) => {
             body: JSON.stringify(message)
         }).then(response => {retrieveMessages()})
         return false
-    }
+		break;
+		default: null
+		resolve("Done")
+	}
 })
+})
+}
+
 
 function retrieveMessages () {
     let messageContainer = document.querySelector(".communication-container")
