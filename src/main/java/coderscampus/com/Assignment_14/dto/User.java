@@ -1,5 +1,7 @@
 package coderscampus.com.Assignment_14.dto;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,10 +38,10 @@ public class User implements Comparable<User> {
 		this.id = id;
 	}
 	public String getName() {
-		return username;
+		return name;
 	}
 	public void setName(String name) {
-		this.username = name;
+		this.name = name;
 	}
 	@Override
 	public int hashCode() {

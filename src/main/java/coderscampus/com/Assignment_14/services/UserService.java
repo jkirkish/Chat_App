@@ -1,5 +1,6 @@
 package coderscampus.com.Assignment_14.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,18 +32,26 @@ public class UserService {
 	}
 	
 	public User save(User user) {
+		
 		return usersRepo.save(user);
 	}
 
 	public User findByUsername(String username) {
-		
 		return usersRepo.findByUsername(username);
+		
 	}
-
+	public User findByPassword(String password) {
+		return usersRepo.findByPassword(password);
+	}
+    public List<User> findAll() {
+    	return usersRepo.findAll();
+    }
 	public User findById(Long userId) {
 		Optional<User> userOpt = usersRepo.findById(userId);
 		return userOpt.orElse(new User());
-	
+	}
+	public void delete(Long userId) {
+		usersRepo.deleteById(userId);
 	}
 }
 

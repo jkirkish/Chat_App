@@ -5,6 +5,7 @@
 </head>
 	<body>
 	<h2>Sign In Below</h2>
+	<form action="" method="post">
 	<div>
 		Username:<input type="text" th:field="${user.username}"/>
 	</div>
@@ -12,14 +13,10 @@
 		Password:<input type="password" th:field="${user.password}"/>
 	</div>
 	<div>
-		<button type="button" id="submitBtn">Submit</button>
+		 <button type="button" id="submitBtn">SubmitYourName</button><!-- Push this button so javascript puts your name in the session chat -->
+	     <input type="submit" value="SubmitFormToLogin"><!-- Push this button to submit the form to check your username and password against the database -->
 	</div>
-	<div>
-	<span th:text="${user.id}"></span><br/>
-			<span th:text="${user.username}"></span><br/>
-			<span th:text="${user.name}"></span><br/>
-			<span th:text="${user.password}"></span>
-	</div>
+	</form>
 		<script type="text/javascript" src="/js/login.js"></script>
 	</body>
 </html>

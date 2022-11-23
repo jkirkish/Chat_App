@@ -8,6 +8,9 @@
 
 	<h1>Register Now</h1>
 	<form action="" method="post">
+	    <div>
+			Name:<input type="text" th:field="${user.name}"/>
+		</div>
 		<div>
 			<label>Username</label> <input type="text"
 				th:field="${user.username}" />
@@ -17,7 +20,7 @@
 				th:field="${user.password}" />
 		</div>
 		<div>
-			<label>Confirm Password</label> <input type="text"
+			<label>Confirm Password</label> <input type="password"
 				id="confirmPassword" />
 		</div>
 		<button>Create Account</button>
