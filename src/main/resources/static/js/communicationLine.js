@@ -1,5 +1,5 @@
 let textBox = document.getElementById('messageBox')
-setInterval(retrieveMessages, 500)
+
 textBox.addEventListener('keyup', (e) => {
     if (e.keyCode === 13) {
         let message = {

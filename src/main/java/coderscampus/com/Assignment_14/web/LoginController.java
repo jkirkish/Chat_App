@@ -19,6 +19,10 @@ public class LoginController {
 	@Autowired
 	private UserService userService;
 	
+	@GetMapping("/ErrorLogin")
+	public String getError() {
+		return "/ErrorLogin";
+	}
 	
 	//pulls up the login.html view
 	@GetMapping("/login")
@@ -36,7 +40,7 @@ public class LoginController {
 	@PostMapping("/login")
 	public String postLogin(String username, String password) {
 		List<User> users = userService.findAll();
-		String url = "redirect:/login";
+		String url = "redirect:/ErrorLogin";
 		for (int i = 0; i < users.size(); i++) {
 			{
 				if (users.get(i).getUsername().equalsIgnoreCase(username)&& users.get(i).getPassword().equals(password))
