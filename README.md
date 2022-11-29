@@ -7,5 +7,5 @@ This application is to show a session between users who want to participate in a
 
 2) In the login page, type in the username and password you registered with.  and push each button once.  (localhost:8080/login)
 
-3) if you login matches the one you registered with in the database.  You are taken to the welcome page to start the chart session.(localhost:8080/welcome  
+3) if you login matches the one you registered with in the database.  You are taken to the welcome page to start the chat session.(localhost:8080/welcome  
 
