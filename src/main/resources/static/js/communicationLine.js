@@ -41,14 +41,12 @@ function retrieveMessages () {
     fetch(`/messages/${channelId}`)
     .then(response => response.json())
     .then(messages => {
-        messageContainer.innerHTML = ''
+       messageContainer.innerHTML = ''
         messages.forEach(message => {
-            messageContainer.innerHTML += `<div>
-              <span class="timestamp">${message.user.name}: </span>
-              <span class="message">${message.text}</span>
-              <span class="message">:{${message.createdDate}}</span>
-               <span class="message">Channel:${message.channelId}</span>
-            </div>`
-        })
-    })
+           messageContainer.innerHTML += `<div>
+			  <span class="timestamp">${message.user.name}: </span>
+		  	  <span class="message">${message.text}</span>
+			</div>`
+		})
+	})
 }setInterval(retrieveMessages, 500)
