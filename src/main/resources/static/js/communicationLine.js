@@ -27,8 +27,6 @@ textBox.addEventListener('keyup', (e) => {
             body: JSON.stringify(message)
         }).then(response => {retrieveMessages()})
         return false
-		break;
-		default: null
 		resolve("Done")
 	}
 })

@@ -12,21 +12,7 @@ onmouseover //when a user mouses over something
 onfocus //when a user puts the cursor in a form field
 onblur //When a user leaves a form field
 */
-submitBtn.addEventListener('click', ()=>{
-	let username = document.querySelector("#username")
-	let password = document.querySelector("#password")
 
-	if(username.value == '' || password.value == ''){
-		alert("You need to input a valid username and password")
-	}else{
-		console.log("Valid login. Enjoy!")
-		var user = {
-			"username" : username.value,
-			"password" : password.value
-		}
-		users.push(user);
-	}	
-})
 
 username.addEventListener('blur', () => {
 	let username = document.querySelector("#username")

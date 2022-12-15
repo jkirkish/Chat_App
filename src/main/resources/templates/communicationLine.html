@@ -7,8 +7,8 @@
 		<link rel="stylesheet" href="/css/communicationLine.css"/>
 		<script th:inline="javascript">
 		   
-		    let channelId = /*[[${communicationLine.channelId}]]*/null;
-			let user = sessionStorage.getItem("user")
+		    var channelId = /*[[${communicationLine.channelId}]]*/null;
+			var user = sessionStorage.getItem("user")
 			switch(user) {
 			case null:
 				window.location.href = '/welcome'

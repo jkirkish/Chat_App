@@ -3,6 +3,26 @@
 	<head>
 		<title>Pick Your Channel</title>
 		<link rel="stylesheet" href="/css/welcome.css"/>
+		<script type="text/javascript">
+		var user = sessionStorage.getItem("user")
+
+		if (user == null) {
+			let name = prompt("What's your name?", "Guest")
+					while (name === '' || name == null) {
+						name = prompt("What's your name?", "Guest")
+					}
+			fetch('/users', {
+				method: 'POST',
+				body: name
+			}).then(response => response.json())
+			.then(user => {
+				sessionStorage.setItem('user', JSON.stringify(user));
+			})
+		} else {
+			user = JSON.parse(sessionStorage.getItem("user"))
+					console.log(user)
+		}
+		</script>	
 	</head>
 	<body>
 		<div>
@@ -16,6 +36,6 @@
 			
 		</table>	
 		</div>
-			<script type="text/javascript" src="/js/welcome.js"></script>
+		
 	</body>
 </html>
