@@ -1,35 +1,46 @@
 package coderscampus.com.Assignment_14.dto;
 
-import java.time.LocalDateTime;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+@Entity
 public class TextLine {
-	private String text;
-	private LocalDateTime createdDate;
-	private Long channelId;
+	private Long id;
+	private String message;
+	private CommunicationLine channel;
 	private User user;
 	
-	public String getText() {
-		return text;
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Long getId() {
+		return id;
 	}
-	public void setText(String text) {
-		this.text = text;
+	public void setId(Long id) {
+		this.id = id;
 	}
-	public LocalDateTime getCreatedDate() {
-		return createdDate;
+	@Column(name = "textMessage")
+	public String getMessage() {
+		return message;
 	}
-	public void setCreatedDate(LocalDateTime createdDate) {
-		this.createdDate = createdDate;
+	public void setMessage(String message) {
+		this.message = message;
 	}
-	public Long getChannelId() {
-		return channelId;
+	@ManyToOne
+	public CommunicationLine getChannel() {
+		return channel;
 	}
-	public void setChannelId(Long channelId) {
-		this.channelId = channelId;
+	public void setChannel(CommunicationLine channel) {
+		this.channel = channel;
 	}
+	@ManyToOne
 	public User getUser() {
 		return user;
 	}
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
 }

@@ -1,41 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
+//Jose_14_Assignment
 	<head>
 		<title>Pick Your Channel</title>
 		<link rel="stylesheet" href="/css/welcome.css"/>
-		<script type="text/javascript">
-		var user = sessionStorage.getItem("user")
-
-		if (user == null) {
-			let name = prompt("What's your name?", "Guest")
-					while (name === '' || name == null) {
-						name = prompt("What's your name?", "Guest")
-					}
-			fetch('/users', {
-				method: 'POST',
-				body: name
-			}).then(response => response.json())
-			.then(user => {
-				sessionStorage.setItem('user', JSON.stringify(user));
-			})
-		} else {
-			user = JSON.parse(sessionStorage.getItem("user"))
-					console.log(user)
-		}
-		</script>	
+		
 	</head>
 	<body>
 		<div>
-			<h2>Choose the Channel You Desire</h2>
+			<h2>Create A Channel and Choose it</h2>
 		</div>
 		<div th:each="communicationLine : ${commLines}">
-		<table>
-			<tr>
-				<td><a th:href="@{/commLines/{channelId}(channelId=${communicationLine.channelId})}" th:text="${communicationLine.channelId}"></a></td>
-			</tr>
-			
-		</table>	
-		</div>
 		
+				//<td><a th:href="@{/commLines/{channelId}(channelId=${communicationLine.channelId})}"
+				//th:text="${communicationLine.channelId}"></a>	
+		<a th:href="@{/communicationLine/{channelId}(channelId=${communicationLine.channelId})}">
+		<span th:text="${communicationLine.name}"></span>			
+	</a>
+		</div>
+		<form action="/createChannel" method="post">
+			<div>
+				<label>Create Channel</label> <input type="text" th:field="${communicationLine.name}">
+			</div>
+		<input type="submit" value="Create Comm Channel" />
+	</form>
+		<script type="text/javascript" src="/js/welcome.js"></script>
 	</body>
 </html>

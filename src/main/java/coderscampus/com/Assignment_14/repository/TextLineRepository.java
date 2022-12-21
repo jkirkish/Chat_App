@@ -1,25 +1,22 @@
 package coderscampus.com.Assignment_14.repository;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
-import org.springframework.stereotype.Component;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import coderscampus.com.Assignment_14.dto.CommunicationLine;
 import coderscampus.com.Assignment_14.dto.TextLine;
 
 @Repository
-public class TextLineRepository {
-	private Map<Long, List<TextLine>> messages = new HashMap<>();
+public interface TextLineRepository extends JpaRepository<TextLine, Long>{
+	
+	List<TextLine> findByChannel_id(Long channelId);
+	@Query(value ="SELECT * FROM MESSAGE WHERE channel_Id = ?", nativeQuery = true)
+	List<TextLine> findAllByChannelId(Long channelId);
+	Optional<CommunicationLine> findMessagesByChannel(Long channelId);
+	
 
-	public Optional<List<TextLine>> findMessagesByChannel(Long channelId) {
-		List<TextLine> messagesByChannel = messages.get(channelId);
-		return Optional.ofNullable(messagesByChannel);
-	}
-
-	public void saveMessagesByChannel(Long channelId, List<TextLine> messagesByChannel) {
-		messages.put(channelId, messagesByChannel);
-	}
 }

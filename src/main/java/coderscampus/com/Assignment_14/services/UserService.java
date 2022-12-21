@@ -10,10 +10,7 @@ import coderscampus.com.Assignment_14.dto.User;
 import coderscampus.com.Assignment_14.repository.UserRepository;
 import coderscampus.com.Assignment_14.repository.UsersRepository;
 
-
-
-
-
+//myAssignment14
 @Service
 public class UserService {
 
@@ -32,13 +29,11 @@ public class UserService {
 	}
 	
 	public User save(User user) {
-		
 		return usersRepo.save(user);
 	}
 
 	public User findByUsername(String username) {
 		return usersRepo.findByUsername(username);
-		
 	}
 	public User findByPassword(String password) {
 		return usersRepo.findByPassword(password);

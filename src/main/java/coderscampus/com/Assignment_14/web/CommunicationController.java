@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import coderscampus.com.Assignment_14.dto.TextLine;
-import coderscampus.com.Assignment_14.services.Communications;
+import coderscampus.com.Assignment_14.services.CommunicationService;
 
 
 
@@ -19,7 +19,7 @@ import coderscampus.com.Assignment_14.services.Communications;
 @RestController
 public class CommunicationController {
 	@Autowired
-	private Communications messageService;
+	private CommunicationService messageService;
 	
 	@GetMapping("/messages/{channelId}")
 	public List<TextLine> getMessagesByChannelId (@PathVariable Long channelId) {

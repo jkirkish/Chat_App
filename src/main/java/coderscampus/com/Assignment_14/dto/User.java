@@ -1,5 +1,6 @@
 package coderscampus.com.Assignment_14.dto;
-
+import java.util.ArrayList;
+//coders.Assignment.my14
 import java.util.List;
 
 import javax.persistence.Column;
@@ -7,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +18,8 @@ public class User implements Comparable<User> {
 	private String name;
 	private String username;
 	private String password;
+	private List<TextLine> message = new ArrayList<>();
+	private List<CommunicationLine> channel = new ArrayList<>();
 	
 	@Column(unique = true)
 	public String getUsername() {
@@ -42,6 +46,20 @@ public class User implements Comparable<User> {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	@OneToMany(mappedBy = "user")
+	public List<TextLine> getMessage() {
+		return message;
+	}
+	public void setMessage(List<TextLine> message) {
+		this.message = message;
+	}
+	@OneToMany(mappedBy = "user")
+	public List<CommunicationLine> getChannel() {
+		return channel;
+	}
+	public void setChannel(List<CommunicationLine> channel) {
+		this.channel = channel;
 	}
 	@Override
 	public int hashCode() {
