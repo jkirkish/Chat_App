@@ -1,10 +1,10 @@
-package coderscampus.com.Assignment_14.dto;
-
+package coderscampus.com.Assignment_14.domain;
+//MessageDTO
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class TextLineDTO {
+public class MessageDTO {
 
 	@JsonProperty("messageName")
 	private String messageName;

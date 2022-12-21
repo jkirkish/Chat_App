@@ -1,29 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-//Jose_14_Assignment
 	<head>
 		<title>Pick Your Channel</title>
 		<link rel="stylesheet" href="/css/welcome.css"/>
 		
 	</head>
 	<body>
-		<div>
-			<h2>Create A Channel and Choose it</h2>
-		</div>
-		<div th:each="communicationLine : ${commLines}">
-		
-				//<td><a th:href="@{/commLines/{channelId}(channelId=${communicationLine.channelId})}"
-				//th:text="${communicationLine.channelId}"></a>	
-		<a th:href="@{/communicationLine/{channelId}(channelId=${communicationLine.channelId})}">
-		<span th:text="${communicationLine.name}"></span>			
+	<div>
+	<h1>Channels</h1>
+</div>
+<div th:each="channel : ${channels}">
+	<a th:href="@{/channel/{channelId}(channelId=${channel.id})}">
+		<span th:text="${channel.name}"></span>			
 	</a>
-		</div>
-		<form action="/createChannel" method="post">
-			<div>
-				<label>Create Channel</label> <input type="text" th:field="${communicationLine.name}">
-			</div>
-		<input type="submit" value="Create Comm Channel" />
-	</form>
+</div>
+ <form action="/createChannel" method="post">
+	 <div>
+	 	Create Channel <input type="text" th:field="${channel.name}">
+	</div>
+	<input type="submit" value="Create Channel" />
+</form>
 		<script type="text/javascript" src="/js/welcome.js"></script>
 	</body>
 </html>

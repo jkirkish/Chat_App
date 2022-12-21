@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+	    <title th:text="${channel.name}"></title>
+		<script src="https://kit.fontawesome.com/02dccec1f3.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="/css/communicationLine.css"/>
+		<script th:inline="javascript">
+		   
+		    var channelId = /*[[${channel.channelId}]]*/null;
+			var user = sessionStorage.getItem("user")
+			switch(user) {
+			case null:
+				window.location.href = '/welcome'
+				break;
+			  default:
+				  user = JSON.parse(sessionStorage.getItem("user"))  
+			}
+
+		/*]]>*/
+		</script>
+	</head>
+	<body>
+		<div class="header">
+			<h2><i class="fas fa-cloud" style="font-size:48px;color:red;"></i>BOOTCAMP CHANNEL FOR WAANNA BE CODERS!!<i class="fas fa-cloud" style="font-size:48px;color:red;"></i></h2>
+		</div>
+		<div>
+			<h3>CHAT BOX</h3>
+		</div>
+		<div class="communication-container" >
+		  <div th:each="message : ${messages}" th:inline="text">
+		  	<span class="timestamp">[[${message.user.name}]]: </span>
+		  	<span class="message">[[${message.text}]]</span>
+		  </div>
+		</div>
+		<div>
+			<h3>Enter Text Below:</h3>
+		</div>
+		<div class="communication-box">
+			<textarea  placeholder="Text here..." rows="5" cols="42" id="messageBox"></textarea>
+		</div>
+		<script type="text/javascript" src="/js/channel.js"></script>
+	</body>
+</html>

@@ -6,21 +6,20 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import coderscampus.com.Assignment_14.dto.User;
-import coderscampus.com.Assignment_14.repository.UserRepository;
+import coderscampus.com.Assignment_14.domain.User;
 import coderscampus.com.Assignment_14.repository.UsersRepository;
+
 
 //myAssignment14
 @Service
 public class UserService {
-
-	//this userRepo variable is for the session of users who are participating in the chatBox
 	@Autowired
-	private UserRepository userRepo;
+	private UsersRepository userRepo;
 	
-	//this usersRepo variable is for the database of users who register 
-	@Autowired
-	private UsersRepository usersRepo;
+
+	public Optional<User> findByUsername(String username) {
+		return userRepo.findByUsername(username);
+	}
 	
 	public User createUser (String name) {
 		User user = new User();
@@ -29,24 +28,14 @@ public class UserService {
 	}
 	
 	public User save(User user) {
-		return usersRepo.save(user);
+		return userRepo.save(user);
 	}
 
-	public User findByUsername(String username) {
-		return usersRepo.findByUsername(username);
+	public List<User> findAll() {
+		return userRepo.findAll();
 	}
+	
 	public User findByPassword(String password) {
-		return usersRepo.findByPassword(password);
-	}
-    public List<User> findAll() {
-    	return usersRepo.findAll();
-    }
-	public User findById(Long userId) {
-		Optional<User> userOpt = usersRepo.findById(userId);
-		return userOpt.orElse(new User());
-	}
-	public void delete(Long userId) {
-		usersRepo.deleteById(userId);
+		return userRepo.findByPassword(password);
 	}
 }
-

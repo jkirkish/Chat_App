@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import coderscampus.com.Assignment_14.dto.User;
+
+import coderscampus.com.Assignment_14.domain.User;
 import coderscampus.com.Assignment_14.services.UserService;
 
 
@@ -25,12 +26,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@PostMapping("/exists")
-	@ResponseBody
-	public Boolean postExists(@RequestBody User user) {
-		user = userService.findByUsername(user.getUsername());
-		return (user != null);
-	}
+	
 	
 	@GetMapping("/users/validateUsername")
 	@ResponseBody

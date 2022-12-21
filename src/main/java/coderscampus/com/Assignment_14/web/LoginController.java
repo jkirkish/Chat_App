@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import coderscampus.com.Assignment_14.dto.User;
+import coderscampus.com.Assignment_14.domain.User;
 import coderscampus.com.Assignment_14.services.UserService;
 
 @Controller
