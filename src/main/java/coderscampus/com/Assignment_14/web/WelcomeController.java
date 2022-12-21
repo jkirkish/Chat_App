@@ -62,7 +62,7 @@ public class WelcomeController {
 	}
 	@PostMapping("/saveMess")
 	@ResponseBody
-	public Boolean saveMess(@RequestBody User user){//note to self: I did it by user since I couldnt pass a message to many errors
+	public Boolean saveMess(@RequestBody User user){
 		messageService.saveMess(user);
 		return true;
 	}

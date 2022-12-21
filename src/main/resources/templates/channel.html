@@ -3,10 +3,10 @@
 	<head>
 	    <title th:text="${channel.name}"></title>
 		<script src="https://kit.fontawesome.com/02dccec1f3.js" crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="/css/communicationLine.css"/>
+		<link rel="stylesheet" href="/css/channel.css"/>
 		<script th:inline="javascript">
 		   
-		    var channelId = /*[[${channel.channelId}]]*/null;
+		    
 			var user = sessionStorage.getItem("user")
 			switch(user) {
 			case null:
@@ -16,7 +16,7 @@
 				  user = JSON.parse(sessionStorage.getItem("user"))  
 			}
 
-		/*]]>*/
+		
 		</script>
 	</head>
 	<body>

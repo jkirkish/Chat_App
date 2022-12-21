@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+//assignment14
 @Entity
 @Table(name = "users")
 public class User implements Comparable<User> {

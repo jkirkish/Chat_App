@@ -1,5 +1,3 @@
-
-
 startMessaging().then((message1) => {
 	console.log("Message executed!")
 	console.log(message1)

@@ -40,7 +40,7 @@ public class MessageService {
 		List<MessageDTO> newMessages = new ArrayList<MessageDTO>();
 		for(Message mess:messages) {
 			MessageDTO newMess = new MessageDTO();
-			newMess.setChannelId(mess.getChannel().getChannelId());
+			newMess.setChannelId(mess.getChannel().getId());
 			newMess.setMessageName(mess.getUser().getUsername());
 			newMess.setMessageContent(mess.getMessage());
 			newMess.setUserId(mess.getUser().getId());
@@ -69,7 +69,7 @@ public class MessageService {
 		}
 		String mess = user.getMessage().get(0).getMessage();
 		Message fullMess = new Message();
-		Optional<Channel> channelFound = channelService.findById(user.getId());// note to self im finding by user id(its actualuy the value of the channelid since passing in the channel to the user wosent working)
+		Optional<Channel> channelFound = channelService.findById(user.getId());
 		Channel fullChannel = channelFound.get();
 		fullMess.setChannel(fullChannel);
 		fullMess.setMessage(user.getMessage().get(0).getMessage());
