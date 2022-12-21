@@ -34,15 +34,7 @@ public class CommunicationLineController {
 		return "redirect:/welcome";
 	}
 	
-	@GetMapping("/commLines/{channelId}")
-	public String getChannel(ModelMap model, @PathVariable Long channelId) {
-		CommunicationLine communicationLine = commsService.findChannelById(channelId);
-		ArrayList<TextLine> messagesByChannel = (ArrayList<TextLine>) messageService.getCommunicationsByLine(channelId);
-		model.put("communicationLine", communicationLine);
-		model.put("messages", messagesByChannel);
-		
-		return "communicationLine";
-	}
+	
 	
 	@GetMapping("/welcome")
 	public String getWelcome (ModelMap model) {

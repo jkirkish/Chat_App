@@ -22,16 +22,5 @@ public class CommunicationService {
 	@Autowired
 	private CommunicationLineRepository communicationRepo;
 
-	public List<TextLine> getCommunicationsByLine(Long channelId) {
-		return textLineRepo.findMessagesByChannel(channelId);
-	}
-
-	public void putCommunicationToLine(TextLine message) {
-		Optional<CommunicationLine> channelOpt = communicationRepo.findById(message.getChannelId());
-		if (channelOpt.isPresent()) {
-			List<TextLine> communicationByLine = getCommunicationsByLine(message.getChannelId());
-			communicationByLine.add(message);
-			textLineRepo.saveMessagesByChannel(message.getChannelId(), communicationByLine);
-		}
-	}
+	
 }
