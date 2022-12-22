@@ -85,4 +85,5 @@ public class WelcomeController {
 		channelService.save(channel);
 		return "redirect:/welcome";
 	}
+	
 }
