@@ -43,6 +43,7 @@ public class UserController {
 	public User getRegistered (@RequestBody String username) {
 		return userService.createUser(username);
 	}
+	
 	@GetMapping("/register")
 	public String getRegister(ModelMap model) {
 		User user = new User();
