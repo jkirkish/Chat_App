@@ -17,17 +17,12 @@ public class RegisteredUserController {
 	private UserService userService;
 
 	@PostMapping("/users")
-	public Boolean initiateWelcomeUserSession(@RequestBody String name) {
+	public void initiateWelcomeUserSession(@RequestBody String name) {
 		List<User> users = userService.findAll();
-		boolean result = users.stream().anyMatch(answer -> users.contains(name));
-
-		if (result == true) {
-			System.out.println("Result : is " + result);
-
-		} else {
-			System.out.println("Result : is " + false);
-		}
-		return result;
+		                  users.stream()
+				               .filter(x -> x.getName().equals(name))
+		                       .forEach(x ->System.out.println(x.getName().equals(name)));          		       
+      
 	}
 
 }

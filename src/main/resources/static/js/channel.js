@@ -1,48 +1,75 @@
-startMessaging().then((message1) => {
-	console.log("Message executed!")
-	console.log(message1)
-	
-})
-function startMessaging(){
-	return new Promise((resolve,reject)=> {
-var textBox = document.getElementById('messageBox')	
-textBox.addEventListener('keyup', (e) => {
-	switch(e.keyCode){
-		case 13:
-		        let message = {
-                "text": textBox.value,
-                "channelId": channelId,
-                "user": user,
-                "createdDate": new Date()
-        }
-        let messageText = textBox.value
-        textBox.value = ''
-        fetch('/messages', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8'
-            },
-            body: JSON.stringify(message)
-        }).then(response => {retrieveMessages()})
-        return false
-		resolve("Done")
+let test = sessionStorage.getItem('user')
+console.log(test)
+let inputText = document.querySelector('#message')
+console.log(inputText.value)
+let shiftPress = false
+let enterPress = false
+function saveUserMessage(){
+	const queryString = window.location.href;
+	let channelId = queryString.substring(queryString.lastIndexOf("/") + 1, queryString.length);
+			let user = {
+				'id': channelId,
+				'username' : test,
+				'message' : [{
+					'message' : inputText.value
+				}],
+				'channel' : [{
+					'id' : channelId
+				}]
+			}
+	let responseEntity = fetch('/saveMess', {
+					method: 'POST',
+					headers: {
+						'Content-type': 'application/json'
+					},
+					body: JSON.stringify(user)
+				})
+}
+inputText.addEventListener('keydown', (e) => {
+	if(e.shiftKey) shiftPress = true
+	if(e.keyCode == 13){
+		e.preventDefault()
+		enterPress = true
 	}
 })
+inputText.addEventListener('keyup', (e) => {
+	if(e.shiftKey || e.keyCode == 13){
+		if(!enterPress) shiftPress = false
+		else{
+			if(!shiftPress){
+				saveUserMessage()
+				e.preventDefault
+				inputText.value = ''
+				enterPress = false
+			} else{
+				inputText.value += "\n"
+				enterPress = false
+				shiftPress = false
+			}
+		}
+	}
 })
-}
-
-
-function retrieveMessages () {
-    let messageContainer = document.querySelector(".communication-container")
-    fetch(`/messages/${channelId}`)
-    .then(response => response.json())
-    .then(messages => {
-       messageContainer.innerHTML = ''
-        messages.forEach(message => {
-           messageContainer.innerHTML += `<div>
-			  <span class="timestamp">${message.user.name}: </span>
-		  	  <span class="message">${message.text}</span>
-			</div>`
-		})
+function getMessages(){
+	const queryString = window.location.href;
+	let channelId = queryString.substring(queryString.lastIndexOf("/") + 1, queryString.length);
+	fetch('/channel/'+ new URLSearchParams({channelId})+'/getMessages', {
+		method : 'POST',
+		headers : {
+			'Content-Type': 'application/json'
+		}
+	}).then(response => response.json()).then(function (data){ 
+			appendMessages(data)
 	})
-}setInterval(retrieveMessages, 500)
+	
+	
+}
+	function appendMessages(data){
+		var messageBox = document.getElementById('messageBox')
+		messageBox.innerHTML = ''
+		for(var i = 0; i < data.length; i++){
+			var div = document.createElement('div');
+			div.innerHTML = data[i].messageName + ": " + data[i].messageContent;
+			messageBox.appendChild(div);
+		}
+	}
+setInterval(getMessages, 500)
