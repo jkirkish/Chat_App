@@ -28,7 +28,7 @@ public class UserController {
 	
 	
 	
-	@GetMapping("/users/validateUsername")
+	@GetMapping("/validateUsername")
 	@ResponseBody
 	public Boolean getValidUsername(String name) {
 		return true;
@@ -39,6 +39,13 @@ public class UserController {
 		return true;
 		
 	}
+	@PostMapping("/exists")
+	@ResponseBody
+	public Boolean postExists(@RequestBody User user) {
+		user = userService.findByUsername(user.getUsername());
+		return (user != null);
+	}
+	
 	@PostMapping("/users")
 	public User getRegistered (@RequestBody String username) {
 		return userService.createUser(username);
@@ -56,4 +63,3 @@ public class UserController {
 		return "redirect:/login";
 	}
 }
-

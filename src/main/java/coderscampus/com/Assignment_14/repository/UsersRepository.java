@@ -11,7 +11,7 @@ import coderscampus.com.Assignment_14.domain.User;
 @Repository
 public interface UsersRepository extends JpaRepository<User, Long>{
     
-	Optional<User> findByUsername(String username);
+	User findByUsername(String username);
 
 	User findByPassword(String password);
 

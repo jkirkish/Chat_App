@@ -17,6 +17,7 @@ usernameTextbox.addEventListener('blur', () => {
 	.then( (data) => {
 		if (data === true) {
 			// this users already exists!
+			alert("username already exists")
 			console.log("username already exists")
 			usernameTextbox.focus()
 			usernameTextbox.select()

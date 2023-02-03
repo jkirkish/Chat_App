@@ -1,6 +1,5 @@
 package coderscampus.com.Assignment_14.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import coderscampus.com.Assignment_14.domain.Channel;
 import coderscampus.com.Assignment_14.domain.Message;
-import coderscampus.com.Assignment_14.domain.MessageDTO;
 import coderscampus.com.Assignment_14.domain.User;
 import coderscampus.com.Assignment_14.repository.MessageRepository;
 
@@ -35,19 +33,6 @@ public class MessageService {
 		return messageRepo.findByChannel_id(channelId);
 	}
 
-	public List<MessageDTO> findAllByChannelIdDTO(Long channelId) {
-		List<Message> messages = messageRepo.findAllByChannelId(channelId);
-		List<MessageDTO> newMessages = new ArrayList<MessageDTO>();
-		for(Message mess:messages) {
-			MessageDTO newMess = new MessageDTO();
-			newMess.setChannelId(mess.getChannel().getId());
-			newMess.setMessageName(mess.getUser().getUsername());
-			newMess.setMessageContent(mess.getMessage());
-			newMess.setUserId(mess.getUser().getId());
-			newMessages.add(newMess);
-		}
-		return newMessages;
-	}
 
 	public void saveMess(User user) {
 		String username = user.getUsername();

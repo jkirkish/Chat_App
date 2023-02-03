@@ -2,7 +2,7 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <title>Register</title>
-<link rel="stylesheet" href="/css/register.css"/>
+<!--<link rel="stylesheet" href="/css/register.css"/>-->
 </head>
 <body>
 
@@ -19,10 +19,7 @@
 			<label>Password</label> <input type="password"
 				th:field="${user.password}" />
 		</div>
-		<div>
-			<label>Confirm Password</label> <input type="password"
-				id="confirmPassword" />
-		</div>
+		
 		<button>Create Account</button>
 	</form>
 	<a href="/login" >Login</a>

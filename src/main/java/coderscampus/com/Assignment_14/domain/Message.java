@@ -42,5 +42,9 @@ public class Message {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	@Override
+	public String toString() {
+		return "Message [id=" + id + ", message=" + message + ", channel=" + channel + ", user=" + user + "]";
+	}
 	
 }

@@ -16,11 +16,6 @@ public class UserService {
 	@Autowired
 	private UsersRepository userRepo;
 	
-
-	public Optional<User> findByUsername(String username) {
-		return userRepo.findByUsername(username);
-	}
-	
 	public User createUser (String name) {
 		User user = new User();
 		user.setName(name);
@@ -37,5 +32,10 @@ public class UserService {
 	
 	public User findByPassword(String password) {
 		return userRepo.findByPassword(password);
+	}
+
+	public User findByUsername(String username) {
+		
+		return userRepo.findByUsername(username);
 	}
 }

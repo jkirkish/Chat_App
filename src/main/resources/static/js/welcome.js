@@ -12,6 +12,7 @@
 			}).then(response => response.json())
 			.then(user => {
 				sessionStorage.setItem('user', JSON.stringify(user));
+				console.log("User is " + user)
 			})
 		} else {
 			user = JSON.parse(sessionStorage.getItem("user"))

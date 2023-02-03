@@ -1,7 +1,6 @@
 package coderscampus.com.Assignment_14.web;
 //Assignment14
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import coderscampus.com.Assignment_14.domain.Channel;
 import coderscampus.com.Assignment_14.domain.Message;
-import coderscampus.com.Assignment_14.domain.MessageDTO;
 import coderscampus.com.Assignment_14.domain.User;
 import coderscampus.com.Assignment_14.services.ChannelService;
 import coderscampus.com.Assignment_14.services.MessageService;
@@ -39,15 +37,8 @@ public class WelcomeController {
 		model.put("channel", channel);
 		return "welcome";
 	}
-	@GetMapping("/channel/{channelId}")
-	public String getChannelPage(@PathVariable Long channelId, ModelMap model) {
-		Optional<Channel> channel = channelService.findById(channelId);
-		List<Message> messages = messageService.findAllByChannelId(channelId);
-		Channel mainChannel = channel.get();
-		model.put("channel", mainChannel);
-		model.put("message", messages);
-		return "channel";
-	}
+	
+	
 	@PostMapping("/channel/{channelId}")
 	public String postChannelPage(Message message) {
 		Message messagesSaved = messageService.save(message);
@@ -66,14 +57,7 @@ public class WelcomeController {
 		messageService.saveMess(user);
 		return true;
 	}
-	@PostMapping("/channel/{channelId}/getMessages")
-	@ResponseBody
-	public List<MessageDTO> getMessages(@PathVariable String channelId){
-		String numOnly = channelId.replaceAll("[^0-9]", "");
-		Long channel = Long.parseLong(numOnly);
-		List<Message> listOfMessages = messageService.findAllByChannelId(channel);
-		return messageService.findAllByChannelIdDTO(channel);
-	}
+	
 	
 	@GetMapping("")
 	public String redirectToWelcome() {
@@ -85,5 +69,9 @@ public class WelcomeController {
 		channelService.save(channel);
 		return "redirect:/welcome";
 	}
-	
+	@PostMapping("/welcome/{channelId}/delete")
+	public String deleteOneChannel(@PathVariable Long channelId) {
+		channelService.delete(channelId);
+		return "redirect:/welcome";
+	}
 }

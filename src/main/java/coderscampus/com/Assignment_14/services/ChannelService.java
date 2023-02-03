@@ -27,5 +27,10 @@ public class ChannelService {
 		return channelRepo.save(channel);
 	}
 
+	public void delete(Long channelId) {
+		channelRepo.deleteById(channelId);
+		
+	}
+
 
 }

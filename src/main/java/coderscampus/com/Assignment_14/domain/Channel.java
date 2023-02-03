@@ -16,17 +16,17 @@ import javax.persistence.OneToMany;
 @Table(name = "Channels")
 public class Channel {
 	
-	private Long id;
+	private Long channelId;
 	private String name;
 	private List<Message> message = new ArrayList<>();
 	private User user;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
-		return id;
+		return channelId;
 	}
 	public void setId(Long id) {
-		this.id = id;
+		this.channelId = id;
 	}
 	public String getName() {
 		return name;
@@ -48,5 +48,9 @@ public class Channel {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	@Override
+	public String toString() {
+		return "Channel [channelId=" + channelId + ", name=" + name + ", message=" + message + ", user=" + user + "]";
 	}
 }

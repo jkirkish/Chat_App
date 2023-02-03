@@ -2,7 +2,6 @@ package coderscampus.com.Assignment_14.domain;
 import java.util.ArrayList;
 //coders.Assignment.my14
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -60,6 +59,11 @@ public class User implements Comparable<User> {
 	}
 	public void setChannel(List<Channel> channel) {
 		this.channel = channel;
+	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password + ", message="
+				+ message + ", channel=" + channel + "]";
 	}
 	@Override
 	public int hashCode() {
