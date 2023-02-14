@@ -22,10 +22,10 @@ public class Channel {
 	private User user;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
+	public Long getChannelId() {
 		return channelId;
 	}
-	public void setId(Long id) {
+	public void setChannelId(Long id) {
 		this.channelId = id;
 	}
 	public String getName() {

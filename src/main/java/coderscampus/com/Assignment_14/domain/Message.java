@@ -15,10 +15,10 @@ public class Message {
 	private User user;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
+	public Long getChannelId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setChannelId(Long id) {
 		this.id = id;
 	}
 	@Column(name = "textMessage")

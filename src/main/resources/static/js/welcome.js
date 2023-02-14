@@ -1,5 +1,4 @@
-
-		let user = sessionStorage.getItem("user")
+let user = sessionStorage.getItem("user")
 
 		if (user == null) {
 			let nameOfUser = prompt("What's your name?", "Participant")

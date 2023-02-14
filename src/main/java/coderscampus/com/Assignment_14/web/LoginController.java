@@ -31,12 +31,7 @@ public class LoginController {
 		model.put("user", user);
 		return "login";
 	}
-	/*the getMapping method gets the inputted username and password from the login.html page. It sends these two
-	/parameters to the userservice and usersRepository to check and see if the user is already registered.  If 
-	 * the username and password match the corresponding username and password stored in the usersRepository, then 
-	 * the user can login and be redirected to the welcome page.  If there is a mismatch, then the user is prompted to 
-	 * try again and enter a registered username and password.  
-	 */
+	
 	@PostMapping("/login")
 	public String postLogin(String username, String password) {
 		List<User> users = userService.findAll();

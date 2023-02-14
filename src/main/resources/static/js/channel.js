@@ -35,7 +35,7 @@ function retrieveMessages () {
     fetch(`/messages/${channelId}`)
     .then(response => response.json())
     .then(messages => {
-       messageContainer.innerHTML = ''
+       messageContainer.innerHTML = ""
         messages.forEach(message => {
            messageContainer.innerHTML += `<div>
 			  <span class="timestamp">${message.user.name}:
@@ -44,4 +44,4 @@ function retrieveMessages () {
 			</div>`
 		})
 	})
-}setInterval(retrieveMessages, 500)		   
+}setInterval(retrieveMessages, 500)	

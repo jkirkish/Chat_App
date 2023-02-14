@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 	<head>
-	    <title th:text="${channel.name}"></title>
+		<title th:text="${channel.name}"></title>
 		<script src="https://kit.fontawesome.com/02dccec1f3.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="/css/channel.css"/>
 		<script th:inline="javascript">
-		   
-		    
-			var user = sessionStorage.getItem("user")
+		/*<![CDATA[*/
+		    let channelId = /*[[${channel.channelId}]]*/null;
+			let user = sessionStorage.getItem("user")
 			switch(user) {
 			case null:
 				window.location.href = '/welcome'
@@ -38,7 +38,6 @@
 		<div class="communication-box">
 			<textarea  placeholder="Text here..." rows="5" cols="42" id="messageBox"></textarea>
 		</div>
-		
 		<script type="text/javascript" src="/js/channel.js"></script>
 	</body>
 </html>

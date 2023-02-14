@@ -1,7 +1,6 @@
 var usernameTextbox = document.getElementById('username')
 
 
-
 usernameTextbox.addEventListener('blur', () => {
 	var user = {
 			'username': usernameTextbox.value,
@@ -30,6 +29,8 @@ usernameTextbox.addEventListener('blur', () => {
 		}
 	})
 })
+
+
 
 function showErrorAnimation () {
 	return new Promise( (resolve, reject) => {

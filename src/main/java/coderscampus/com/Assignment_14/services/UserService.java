@@ -10,7 +10,7 @@ import coderscampus.com.Assignment_14.domain.User;
 import coderscampus.com.Assignment_14.repository.UsersRepository;
 
 
-//myAssignment14
+
 @Service
 public class UserService {
 	@Autowired
@@ -19,8 +19,17 @@ public class UserService {
 	public User createUser (String name) {
 		User user = new User();
 		user.setName(name);
+		
 		return userRepo.save(user);
 	}
+    public Long countUsers(String name) {
+    	User user = new User();
+    	user.setName(name);
+    	if(user.getName().equals(name))
+    	    userRepo.count();
+    	
+    	return userRepo.count();
+}
 	
 	public User save(User user) {
 		return userRepo.save(user);
@@ -38,4 +47,5 @@ public class UserService {
 		
 		return userRepo.findByUsername(username);
 	}
+	
 }

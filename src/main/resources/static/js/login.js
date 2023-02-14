@@ -36,4 +36,3 @@ username.addEventListener('blur', () => {
 			console.log(data)
 		})
 })
-	
