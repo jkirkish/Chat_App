@@ -40,7 +40,9 @@ public class ChannelController {
 	@GetMapping("/welcome")
 	public String getWelcome (ModelMap model) {
 		List<Channel> channels = channelService.findAll();
+		Channel channel = new Channel();
 		model.put("channels", channels);
+		model.put("channel", channel);
 		return "welcome";
 	}
 	@PostMapping("/createChannel")
