@@ -34,7 +34,7 @@ public class ChannelController {
 		model.put("channel", channel);
 		model.put("messages", messagesByChannel);
 		
-		return "channel";
+		return "channel/"+ channel.getChannelId();
 	}
 	
 	@GetMapping("/welcome")

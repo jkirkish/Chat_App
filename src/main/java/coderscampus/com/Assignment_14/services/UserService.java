@@ -19,7 +19,6 @@ public class UserService {
 	public User createUser (String name) {
 		User user = new User();
 		user.setName(name);
-		
 		return userRepo.save(user);
 	}
     public Long countUsers(String name) {
@@ -46,6 +45,12 @@ public class UserService {
 	public User findByUsername(String username) {
 		
 		return userRepo.findByUsername(username);
+	}
+	public User createSessionUser(String name) {
+		User user = new User();
+		user.setName(name);
+		System.out.println("Session " + user.getName());
+		return userRepo.findByUsername(name);
 	}
 	
 }
