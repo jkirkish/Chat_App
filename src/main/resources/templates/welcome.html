@@ -2,47 +2,22 @@
 <html xmlns:th="http://thymeleaf.org">
 	<head>
 		<title>Join Channel</title>
+		<link rel="stylesheet" href="/css/welcome.css" type="text/css" />
 	</head>
 	<body>
-	<script type = "text/javascript">
-	let user = sessionStorage.getItem("user")
-
-	if (user == null) {
-		let nameOfUser = prompt("What's your name?", "Participant")
-				while (nameOfUser === '' || nameOfUser == null) {
-					nameOfUser = prompt("What's your name?", "Participant")
-				}
-		fetch('/users', {
-			method: 'POST',
-			body: nameOfUser
-		}).then(response => response.json())
-		.then(user => {
-			sessionStorage.setItem('user', JSON.stringify(user));
-			console.log("User is " + user)
-		})
-	} else {
-		user = JSON.parse(sessionStorage.getItem("user"))
-				console.log(user)
-	}
-	</script>
+	
 	
 		<h2>Join A Channel</h2>
 		<div th:each="channel : ${channels}">
 			<a th:href="@{/channels/{channelId}(channelId=${channel.channelId})}">
 			<span th:text="${channel.name}"></span></a>
 		</div>
-		<form action="/createChannel" method="post">
+		<form action="/addChannel" method="post">
 		 <div>
-		 	Create Channel <input type="text" th:field="${channel.name}">
+		 	Add Channel <input type="text" th:field="${channel.name}">
 		</div>
-		<input type="submit" value="Start YOur Channel" />
+		<input type="submit" value="Start Your Channel" />
 	</form>
-
-	<div>
-	<form th:action="@{/welcome/{channelId}/delete(channelId=${channel.channelId})}" method="post">
-		<input type="submit" value="Delete Channel"/>
-	</form>
-	</div>	
-		<script type="text/javascript" src="/js/welcome.js"></script>
+		
 	</body>
 </html>

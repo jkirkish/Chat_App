@@ -22,7 +22,7 @@ import coderscampus.com.Assignment_14.services.UserService;
 //		System.out.println(name);
 //		return userService.countUsers(name);
 //	}
-		@PostMapping("/users")
+		@PostMapping("/user")
 		public String createSessionUser (@RequestBody String name) {
 			  userService.createSessionUser(name);
 			  return "redirect:/channel";

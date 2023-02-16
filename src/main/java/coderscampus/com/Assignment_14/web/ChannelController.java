@@ -22,19 +22,19 @@ public class ChannelController {
 	@Autowired
 	private MessageService messageService;
 	
-	@GetMapping("/")
-	public String welcomeRedirect() {
-		return "redirect:/welcome";
-	}
+//	@GetMapping("/")
+//	public String welcomeRedirect() {
+//		return "redirect:/welcome";
+//	}
 	
 	@GetMapping("/channels/{channelId}")
 	public String getChannel(ModelMap model, @PathVariable Long channelId) {
 		Channel channel = channelService.findChannelById(channelId);
-		List<Message> messagesByChannel = messageService.getMessagesByChannel(channelId);
+		//List<Message> messagesByChannel = messageService.getMessagesByChannel(channelId);
 		model.put("channel", channel);
-		model.put("messages", messagesByChannel);
+		//model.put("messages", messagesByChannel);
 		
-		return "channel/"+ channel.getChannelId();
+		return "channel";
 	}
 	
 	@GetMapping("/welcome")
@@ -45,9 +45,14 @@ public class ChannelController {
 		model.put("channel", channel);
 		return "welcome";
 	}
-	@PostMapping("/createChannel")
+	@PostMapping("/addChannel")
 	public String createChannel(Channel channel) {
 		channelService.save(channel);
+		return "redirect:/welcome";
+	}
+	@PostMapping("channels/{channelId}/delete")
+	public String deleteChannel(@PathVariable Long channelId) {
+		channelService.deleteChannel(channelId);
 		return "redirect:/welcome";
 	}
 }
