@@ -12,7 +12,7 @@ messageBox.addEventListener('keyup', (e) => {
 		let messageText = messageBox.value
 		console.log(`Send message ${messageText}`)
 		messageBox.value = ''
-		fetch('/messages', {
+		fetch('/messages/${channelId}', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json; charset=utf-8'

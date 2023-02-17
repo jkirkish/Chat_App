@@ -27,4 +27,5 @@ public class MessageController {
 	public void postMessagesToUserId (@RequestBody Message message) {
 		messageService.addMessageToChannel(message);
 	}
+	
 }

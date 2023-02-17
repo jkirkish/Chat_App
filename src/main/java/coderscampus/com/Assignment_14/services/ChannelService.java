@@ -20,6 +20,7 @@ public class ChannelService {
 	}
 
 	public List<Channel> findAll() {
+		ChannelRepository main = new ChannelRepository();
 		return channelRepo.findAll();
 	}
 

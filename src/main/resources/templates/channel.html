@@ -8,13 +8,13 @@
 	     let user = sessionStorage.getItem("user")
 
 		if (user == null) {
-			let nameOfUser = prompt("What's your name?", "Participant")
-					while (nameOfUser === '' || nameOfUser == null) {
-						nameOfUser = prompt("What's your name?", "Participant")
+			let name = prompt("What's your name?", "Participant")
+					while (name === '' || name == null) {
+						name = prompt("What's your name?", "Participant")
 					}
 			fetch('/user', {
 				method: 'POST',
-				body: nameOfUser
+				body: name
 			}).then(response => response.json())
 			.then(user => {
 				sessionStorage.setItem('user', JSON.stringify(user));

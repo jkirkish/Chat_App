@@ -1,6 +1,7 @@
 package coderscampus.com.Assignment_14.repository;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,14 +12,14 @@ import coderscampus.com.Assignment_14.domain.Channel;
 
 @Repository
 public class ChannelRepository {
-	private List<Channel> channels = new ArrayList<>();
+	private LinkedList<Channel> channels = new LinkedList<>();
 	
 	public ChannelRepository () {
-		Channel general = new Channel();
-		general.setChannelId(1L);
-		general.setName("General");
+		Channel Main = new Channel();
+		Main.setChannelId(1L);
+		Main.setName("Main");
 		
-		channels.add(general);
+		channels.add(Main);
 	}
 	public Optional<Channel> findById (Long channelId) {
 		return channels.stream()

@@ -22,17 +22,17 @@ public class ChannelController {
 	@Autowired
 	private MessageService messageService;
 	
-//	@GetMapping("/")
-//	public String welcomeRedirect() {
-//		return "redirect:/welcome";
-//	}
+	@GetMapping("/")
+	public String welcomeRedirect() {
+		return "redirect:/welcome";
+	}
 	
 	@GetMapping("/channels/{channelId}")
 	public String getChannel(ModelMap model, @PathVariable Long channelId) {
 		Channel channel = channelService.findChannelById(channelId);
-		//List<Message> messagesByChannel = messageService.getMessagesByChannel(channelId);
+		List<Message> messagesByChannel = messageService.getMessagesByChannel(channelId);
 		model.put("channel", channel);
-		//model.put("messages", messagesByChannel);
+		model.put("messages", messagesByChannel);
 		
 		return "channel";
 	}
