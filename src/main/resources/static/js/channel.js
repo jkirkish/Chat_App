@@ -1,4 +1,40 @@
 
+		/*<![CDATA[*/
+		    var channelId = /*[[${channel.channelId}]]*/null;
+			var user = sessionStorage.getItem("user")
+			if (user == null) {
+				window.location.href = '/welcome'
+			} else {
+				user = JSON.parse(sessionStorage.getItem("user"))
+			}
+		/*]]>*/
+		
+	
+	
+	
+		var user = sessionStorage.getItem("user")
+		
+		if (user == null) {
+			let name = prompt("What's your name?", "Guest")
+			while (name === '' || name == null) {
+				name = prompt("What's your name?", "Guest")
+			}
+			fetch('/user', {
+				method: 'POST',
+				body: name
+			}).then(response => response.json())
+			.then(user => {
+				sessionStorage.setItem('user', JSON.stringify(user));
+			})
+		} else {
+			user = JSON.parse(sessionStorage.getItem("user"))
+			console.log(user)
+		}
+	
+
+
+
+
 var messageBox = document.querySelector("#messageBox")
 setInterval(getMessages, 500)
 messageBox.addEventListener('keyup', (e) => {
@@ -12,7 +48,7 @@ messageBox.addEventListener('keyup', (e) => {
 		let messageText = messageBox.value
 		console.log(`Send message ${messageText}`)
 		messageBox.value = ''
-		fetch('/messages/${channelId}', {
+		fetch('/messages', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json; charset=utf-8'
@@ -24,7 +60,7 @@ messageBox.addEventListener('keyup', (e) => {
 })
 
 function getMessages () {
-	let messageContainer = document.querySelector(".communication-container")
+	let messageContainer = document.querySelector(".message-container")
 	fetch(`/messages/${channelId}`)
 	.then(response => response.json())
 	.then(messages => {

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import coderscampus.com.Assignment_14.domain.User;
+import coderscampus.com.Assignment_14.repository.UserRepository;
 import coderscampus.com.Assignment_14.repository.UsersRepository;
 
 
@@ -15,6 +16,8 @@ import coderscampus.com.Assignment_14.repository.UsersRepository;
 public class UserService {
 	@Autowired
 	private UsersRepository userRepo;
+	@Autowired
+	private UserRepository userRepo1;
 	
 	public User createUser (String name) {
 		User user = new User();
@@ -50,7 +53,7 @@ public class UserService {
 		User user = new User();
 		user.setName(name);
 		System.out.println("Session " + user.getName());
-		return userRepo.findByUsername(name);
+		return userRepo1.save(user);
 	}
 	
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import coderscampus.com.Assignment_14.domain.Message;
-//TextLineRepository
+
 
 @Repository
 public class MessageRepository {

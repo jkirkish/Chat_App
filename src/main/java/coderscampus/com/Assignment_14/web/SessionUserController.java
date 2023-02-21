@@ -18,14 +18,10 @@ import coderscampus.com.Assignment_14.services.UserService;
 	@Autowired
 	private UserService userService;
 	  
-//	@GetMapping("/users")
-//	public Long CountUser (@RequestBody String name) {
-//		System.out.println(name);
-//		return userService.countUsers(name);
-//	}
+
 		@PostMapping("/user")
-		public String createSessionUser (@RequestBody String name) {
-			  userService.createSessionUser(name);
-			  return "redirect:/channel";
+		public User createSessionUser (@RequestBody String name) {
+			  return userService.createSessionUser(name);
+			  
 		}
 }

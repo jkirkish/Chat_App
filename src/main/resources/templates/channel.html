@@ -4,61 +4,92 @@
 		<title th:text="${channel.name}"></title>
 		<script src="https://kit.fontawesome.com/02dccec1f3.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="/css/channel.css" type="text/css" />
-		<script>
-	     let user = sessionStorage.getItem("user")
-
-		if (user == null) {
-			let name = prompt("What's your name?", "Participant")
-					while (name === '' || name == null) {
-						name = prompt("What's your name?", "Participant")
-					}
-			fetch('/user', {
-				method: 'POST',
-				body: name
-			}).then(response => response.json())
-			.then(user => {
-				sessionStorage.setItem('user', JSON.stringify(user));
-				console.log("User is " + user)
-			})
-		} else {
-			user = JSON.parse(sessionStorage.getItem("user"))
-					console.log(user)
-		}
-	    </script>
 		<script th:inline="javascript">
 		/*<![CDATA[*/
-		    let channelId = /*[[${channel.channelId}]]*/null;
-//			//user = sessionStorage.getItem("user")
-//			switch(user) {
-//			case null:
-//				window.location.href = '/welcome'
-//				break;
-//			  default:
-//				  user = JSON.parse(sessionStorage.getItem("user"))  
-//			}
-
-			/*]]>*/
-		</script>
+		    var channelId = /*[[${channel.channelId}]]*/null;
+			var user = sessionStorage.getItem("user")
+			if (user == null) {
+				window.location.href = '/welcome'
+			} else {
+				user = JSON.parse(sessionStorage.getItem("user"))
+			}
+		/*]]>*/
+			</script>
+			 <script>
+			    var user = sessionStorage.getItem("user")
+				
+				if (user == null) {
+					let name = prompt("What's your name?", "Guest")
+					while (name === '' || name == null) {
+						name = prompt("What's your name?", "Guest")
+					}
+					fetch('/user', {
+						method: 'POST',
+						body: name
+					}).then(response => response.json())
+					.then(user => {
+						sessionStorage.setItem('user', JSON.stringify(user));
+					})
+				} else {
+					user = JSON.parse(sessionStorage.getItem("user"))
+					console.log(user)
+				}
+			    </script>
+			    <script>
+			    var messageBox = document.querySelector("#messageBox")
+			    setInterval(getMessages, 500)
+			    messageBox.addEventListener('keyup', (e) => {
+			    	if (e.keyCode === 13) {
+			    		let message = {
+			    				"text": messageBox.value,
+			    				"channelId": channelId,
+			    				"user": user,
+			    				"createdDate": new Date()
+			    		}
+			    		let messageText = messageBox.value
+			    		console.log(`Send message ${messageText}`)
+			    		messageBox.value = ''
+			    		fetch('/messages', {
+			    			method: 'POST',
+			    			headers: {
+			    				'Content-Type': 'application/json; charset=utf-8'
+			    			},
+			    			body: JSON.stringify(message)
+			    		}).then(response => {getMessages()})
+			    		return false
+			    	}
+			    })
+			    function getMessages () {
+			    	let messageContainer = document.querySelector(".message-container")
+			    	fetch(`/messages/${channelId}`)
+			    	.then(response => response.json())
+			    	.then(messages => {
+			    		messageContainer.innerHTML = ''
+			    		messages.forEach(message => {
+			    			messageContainer.innerHTML += `<div>
+			    			  <span class="timestamp">${message.user.name}: </span>
+			    		  	  <span class="message">${message.text}</span>
+			    			</div>`
+			    		})
+			    	})
+			    }
+			    </script>
 	</head>
 	<body>
-	    
 		<div class="header">
 			<h2><i class="fas fa-cloud" style="font-size:48px;color:red;"></i>BOOTCAMP CHANNEL FOR WAANNA BE CODERS!!<i class="fas fa-cloud" style="font-size:48px;color:red;"></i></h2>
 		</div>
 		<div>
 			<h3>CHAT BOX</h3>
 		</div>
-		<div class="communication-container" >
+		<div class="message-container">
 		  <div th:each="message : ${messages}" th:inline="text">
 		  	<span class="timestamp">[[${message.user.name}]]: </span>
 		  	<span class="message">[[${message.text}]]</span>
 		  </div>
 		</div>
-		<div>
-			<h3>Enter Text Below:</h3>
-		</div>
-		<div class="communication-box">
-			<textarea  placeholder="Text here..." rows="5" cols="42" id="messageBox"></textarea>
+		<div class="message-box">
+			<textarea rows="3" cols="30" id="messageBox"></textarea>
 		</div>
 		<div>
 		<form th:action="@{/channels/{channelId}/delete(channelId=${channel.channelId})}" method="post">
