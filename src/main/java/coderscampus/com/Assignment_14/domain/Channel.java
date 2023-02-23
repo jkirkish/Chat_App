@@ -35,7 +35,7 @@ public class Channel {
 		this.name = channelName;
 	}
 	
-	@OneToMany(mappedBy = "Channel")
+	@OneToMany(mappedBy = "channel")
 	public List<Message> getMessage() {
 		return message;
 	}
