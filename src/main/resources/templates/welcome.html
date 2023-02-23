@@ -3,7 +3,25 @@
 	<head>
 		<title>Join Channel</title>
 		<link rel="stylesheet" href="/css/welcome.css" type="text/css" />
-		
+		<script>
+		var user = sessionStorage.getItem("user")
+		if (user == null) {
+			let name = prompt("Hello Sir, What is your name?", "Participant")
+			while(name === '' || name == null) {
+				name = prompt("Hello Sir, What is your name?", "Participant")
+			}
+			fetch('/user', {
+				method: 'POST',
+				body: name
+			}).then(response => response.json())
+	          .then(user => {
+	        	  sessionStorage.setItem('user', JSON.stringify(user));
+	          })
+		}else {
+			user = JSON.parse(sessionStorage.getITEM("user"))
+			console.log(user)		
+		}
+		</script>
 		
 	</head>
 	<body>
@@ -20,6 +38,5 @@
 		</div>
 		<input type="submit" value="Start Your Channel" />
 	</form>
-	<script type="text/javascript" src="/js/welcome.js"></script>
 	</body>
 </html>

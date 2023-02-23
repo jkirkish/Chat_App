@@ -13,10 +13,14 @@ import coderscampus.com.Assignment_14.repository.ChannelRepository1;
 public class ChannelService {
 	
 	@Autowired
-	private ChannelRepository1 channelRepo;
+	private ChannelRepository1 channelRepo;//Jpa Repository
+	
+	@Autowired
+	private ChannelRepository channelRepoClass;//class repository
 	
 	public Channel findChannelById(Long channelId) {
 		return channelRepo.findById(channelId).orElse(new Channel());
+		
 	}
 
 	public List<Channel> findAll() {
@@ -25,11 +29,13 @@ public class ChannelService {
 	}
 
 	public Channel save(Channel channel) {
+		channelRepoClass.saveChannel(channel);
 		return channelRepo.save(channel);
 		
 	}
 
 	public void deleteChannel(Long channelId) {
+		 channelRepoClass.deleteChannel();
 		 channelRepo.deleteById(channelId);
 		
 	}

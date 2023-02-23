@@ -29,4 +29,10 @@ public class ChannelRepository {
 	public List<Channel> findAll() {
 		return channels;
 	}
+	public void saveChannel(Channel channel) {
+		channels.add(channel);
+	}
+	public void deleteChannel() {
+		channels.remove();
+	}
 }

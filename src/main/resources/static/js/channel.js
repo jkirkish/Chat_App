@@ -23,16 +23,16 @@ textBox.addEventListener('keyup', (e) => {
 })
 		
 function retrieveMessages(){
-	let messageContainer = document.querySelector(".communication-container")
+	let messageContainer = document.querySelector(".message-container")
 	fetch(`/messages/${channelId}`)
 	.then(response => response.json())
 	.then(messages => {
 		messageContainer.innerHTML = ''
 		messages.forEach(message => {
-			messageContainer.innerHTML += <div>
+			messageContainer.innerHTML += `<div>
 			<span class="timestamp">${message.user.name}: </span>
 		  	  <span class="message">${message.text}</span>
-			</div>
+			</div>`
 		})
 	})
 }
