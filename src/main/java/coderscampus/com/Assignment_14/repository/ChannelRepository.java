@@ -15,11 +15,11 @@ public class ChannelRepository {
 	private LinkedList<Channel> channels = new LinkedList<>();
 	
 	public ChannelRepository () {
-		Channel Main = new Channel();
-		Main.setChannelId(1L);
-		Main.setName("Main");
+		Channel general = new Channel();
+		general.setChannelId(1L);
+		general.setName("General");
 		
-		channels.add(Main);
+		channels.add(general);
 	}
 	public Optional<Channel> findById (Long channelId) {
 		return channels.stream()

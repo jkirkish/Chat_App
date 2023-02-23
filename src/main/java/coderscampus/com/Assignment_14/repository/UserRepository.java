@@ -1,5 +1,6 @@
 package coderscampus.com.Assignment_14.repository;
 
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -11,16 +12,17 @@ import coderscampus.com.Assignment_14.domain.User;
 @Repository
 public class UserRepository {
 
-	private Set<User> users = new TreeSet<>();
+	private ArrayList<User> users = new ArrayList<>();
 	
-	public User save (User user) {
+	public User save(User user) {
 		if (users.size() == 0) {
 			user.setId(1L);
 		} else {
-			User lastUser = ((TreeSet<User>)users).last();
-			user.setId(lastUser.getId() + 1L);
+			User EndParticipant = users.get(users.size()-1);
+			user.setId(EndParticipant.getId() + 1L);
 		}
 		users.add(user);
 		return user;
+		
 	}
 }

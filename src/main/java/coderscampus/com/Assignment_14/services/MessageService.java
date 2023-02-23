@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import coderscampus.com.Assignment_14.domain.Channel;
 import coderscampus.com.Assignment_14.domain.Message;
 import coderscampus.com.Assignment_14.repository.ChannelRepository;
+import coderscampus.com.Assignment_14.repository.ChannelRepository1;
 import coderscampus.com.Assignment_14.repository.MessageRepository;
 
 @Service
@@ -17,6 +18,7 @@ public class MessageService {
 
 	@Autowired
 	private MessageRepository messageRepo;
+	
 	@Autowired
 	private ChannelRepository channelRepo;
 	
@@ -30,6 +32,7 @@ public class MessageService {
 			List<Message> messagesByChannel = getMessagesByChannel(message.getChannelId());
 			messagesByChannel.add(message);
 			messageRepo.saveMessagesByChannel(message.getChannelId(), messagesByChannel);
+			
 		}
 	}
 }

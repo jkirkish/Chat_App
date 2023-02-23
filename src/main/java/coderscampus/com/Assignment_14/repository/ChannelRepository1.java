@@ -1,5 +1,6 @@
 package coderscampus.com.Assignment_14.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,5 +12,9 @@ import coderscampus.com.Assignment_14.domain.Channel;
 public interface ChannelRepository1 extends JpaRepository<Channel, Long> {
 
 	void save(Optional<Channel> channel);
+	
+	Optional<Channel> findById (Long channelId);
+	
+	List<Channel> findAll();
 
 }

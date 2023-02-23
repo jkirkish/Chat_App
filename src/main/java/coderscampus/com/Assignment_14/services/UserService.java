@@ -15,9 +15,9 @@ import coderscampus.com.Assignment_14.repository.UsersRepository;
 @Service
 public class UserService {
 	@Autowired
-	private UsersRepository userRepo;
+	private UsersRepository userRepo;//JPA repository
 	@Autowired
-	private UserRepository userRepo1;
+	private UserRepository userRepo1; //class repository
 	
 	public User createUser (String name) {
 		User user = new User();
