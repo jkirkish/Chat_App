@@ -7,7 +7,7 @@
 		<script th:inline="javascript">
 		/*<![CDATA[*/
 		    alert("Please be respectful in the chatBox!!")
-		    const channelId = /*[[${channel.channelId}]]*/null;
+		    let channelId = /*[[${channel.channelId}]]*/null;
 			let user = sessionStorage.getItem("user")
 			switch(user) {
 			case null:
@@ -18,6 +18,7 @@
 			}
 		/*]]>*/
 			</script>
+			
 	</head>
 	<body>
 		<div class="header">
@@ -35,11 +36,6 @@
 		<div class="message-box">
 			<textarea rows="3" cols="30" id="messageBox"></textarea>
 		</div>
-		<div>
-		<form th:action="@{/channels/{channelId}/delete(channelId=${channel.channelId})}" method="post">
-			<input type="submit" value="Delete Channel"/>
-		</form>
-		</div>	
 		<script type="text/javascript" src="/js/channel.js"></script>
-	</body>
+		</body>
 </html>

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import coderscampus.com.Assignment_14.domain.User;
+import coderscampus.com.Assignment_14.domain.RegisteredUsers;
 import coderscampus.com.Assignment_14.services.UserService;
 
 
@@ -41,24 +41,24 @@ public class UserController {
 	}
 	@PostMapping("/exists")
 	@ResponseBody
-	public Boolean postExists(@RequestBody User user) {
+	public Boolean postExists(@RequestBody RegisteredUsers user) {
 		user = userService.findByUsername(user.getUsername());
 		return (user != null);
 	}
 	
 	@PostMapping("/users")
-	public User getRegistered (@RequestBody String username) {
+	public RegisteredUsers getRegistered (@RequestBody String username) {
 		return userService.createUser(username);
 	}
 	
 	@GetMapping("/register")
 	public String getRegister(ModelMap model) {
-		User user = new User();
+		RegisteredUsers user = new RegisteredUsers();
 		model.put("user", user);
 		return "register";
 	}
 	@PostMapping("/register")
-	public String postRegister(User user) {
+	public String postRegister(RegisteredUsers user) {
 		userService.save(user);
 		return "redirect:/login";
 	}

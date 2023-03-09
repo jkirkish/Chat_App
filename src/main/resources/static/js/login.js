@@ -1,6 +1,9 @@
 var submitBtn = document.querySelector("#submitBtn")
 
 
+var submitBtn = document.querySelector("#submitBtn")
+
+
 let users = []
 //function injected in the addEventlistener to make less lines of code
 //https://idratherbewriting.com/events-and-listeners-javascript/

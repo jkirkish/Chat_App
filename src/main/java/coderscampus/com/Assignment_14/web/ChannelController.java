@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import coderscampus.com.Assignment_14.domain.Channel;
 import coderscampus.com.Assignment_14.domain.Message;
+import coderscampus.com.Assignment_14.repository.ChannelRepository;
 import coderscampus.com.Assignment_14.services.ChannelService;
 import coderscampus.com.Assignment_14.services.MessageService;
-
+//Jose_14_Assignment
 @Controller
 public class ChannelController {
 
@@ -22,13 +23,16 @@ public class ChannelController {
 	@Autowired
 	private MessageService messageService;
 	
+	private ChannelRepository chan = new ChannelRepository();
+	
 	@GetMapping("/")
 	public String welcomeRedirect() {
 		return "redirect:/welcome";
 	}
 	
 	@GetMapping("/channels/{channelId}")
-	public String getChannel(ModelMap model, @PathVariable Long channelId) {
+	public String getChannel(ModelMap model,@PathVariable Long channelId) {
+		List<Channel> channels = channelService.findAll();
 		Channel channel = channelService.findChannelById(channelId);
 		List<Message> messagesByChannel = messageService.getMessagesByChannel(channelId);
 		model.put("channel", channel);
@@ -50,9 +54,10 @@ public class ChannelController {
 		channelService.save(channel);
 		return "redirect:/welcome";
 	}
-	@PostMapping("channels/{channelId}/delete")
-	public String deleteChannel(@PathVariable Long channelId) {
-		channelService.deleteChannel(channelId);
+	@PostMapping("/deleteChannel")
+	public String deleteChannel() {
+		channelService.deleteChannel();
 		return "redirect:/welcome";
 	}
+	
 }

@@ -1,41 +1,32 @@
 package coderscampus.com.Assignment_14.domain;
-//myMessage
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
-@Entity
+import java.time.LocalDateTime;
+import java.util.Objects;
+
 public class Message {
-	private Long id;
-	private String message;
-	private Channel channel;
+	private String text;
+	private LocalDateTime createdDate;
+	private Long channelId;
 	private User user;
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	public String getText() {
+		return text;
+	}
+	public void setText(String text) {
+		this.text = text;
+	}
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(LocalDateTime createdDate) {
+		this.createdDate = createdDate;
+	}
 	public Long getChannelId() {
-		return id;
+		return channelId;
 	}
-	public void setChannelId(Long id) {
-		this.id = id;
+	public void setChannelId(Long channelId) {
+		this.channelId = channelId;
 	}
-	@Column(name = "textMessage")
-	public String getMessage() {
-		return message;
-	}
-	public void setMessage(String message) {
-		this.message = message;
-	}
-	@ManyToOne
-	public Channel getChannel() {
-		return channel;
-	}
-	public void setChannel(Channel channel) {
-		this.channel = channel;
-	}
-	@ManyToOne
 	public User getUser() {
 		return user;
 	}
@@ -44,7 +35,22 @@ public class Message {
 	}
 	@Override
 	public String toString() {
-		return "Message [id=" + id + ", message=" + message + ", channel=" + channel + ", user=" + user + "]";
+		return "Message [text=" + text + ", createdDate=" + createdDate + ", channelId=" + channelId + ", user=" + user
+				+ "]";
 	}
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(channelId);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Message other = (Message) obj;
+		return Objects.equals(channelId, other.channelId);
+	}
 }

@@ -6,14 +6,14 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import coderscampus.com.Assignment_14.domain.User;
+import coderscampus.com.Assignment_14.domain.RegisteredUsers;
 
 @Repository
-public interface UsersRepository extends JpaRepository<User, Long>{
+public interface UsersRepository extends JpaRepository<RegisteredUsers, Long>{
     
-	User findByUsername(String username);
+	RegisteredUsers findByUsername(String username);
 
-	User findByPassword(String password);
+	RegisteredUsers findByPassword(String password);
 
 	
 	

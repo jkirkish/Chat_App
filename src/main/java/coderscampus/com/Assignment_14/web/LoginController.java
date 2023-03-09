@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import coderscampus.com.Assignment_14.domain.User;
+import coderscampus.com.Assignment_14.domain.RegisteredUsers;
 import coderscampus.com.Assignment_14.services.UserService;
 
 @Controller
@@ -27,14 +27,14 @@ public class LoginController {
 	//pulls up the login.html view
 	@GetMapping("/login")
 	public String getLogin(ModelMap model) {
-		User user = new User();
+		RegisteredUsers user = new RegisteredUsers();
 		model.put("user", user);
 		return "login";
 	}
 	
 	@PostMapping("/login")
 	public String postLogin(String username, String password) {
-		List<User> users = userService.findAll();
+		List<RegisteredUsers> users = userService.findAll();
 		String url = "redirect:/ErrorLogin";
 		for (int i = 0; i < users.size(); i++) {
 			{

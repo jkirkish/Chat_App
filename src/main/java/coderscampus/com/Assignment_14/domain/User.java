@@ -1,40 +1,10 @@
 package coderscampus.com.Assignment_14.domain;
 
-import java.util.ArrayList;
-//coders.Assignment.my14
-import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-//assignment14
-@Entity
-@Table(name = "users")
+	
 public class User implements Comparable<User> {
 	private Long id;
 	private String name;
-	private String username;
-	private String password;
-	private List<Message> message = new ArrayList<>();
-	private List<Channel> channel = new ArrayList<>();
 	
-	@Column(unique = true)
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
 	}
@@ -46,25 +16,6 @@ public class User implements Comparable<User> {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	@OneToMany(mappedBy = "user")
-	public List<Message> getMessage() {
-		return message;
-	}
-	public void setMessage(List<Message> message) {
-		this.message = message;
-	}
-	@OneToMany(mappedBy = "user")
-	public List<Channel> getChannel() {
-		return channel;
-	}
-	public void setChannel(List<Channel> channel) {
-		this.channel = channel;
-	}
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password + ", message="
-				+ message + ", channel=" + channel + "]";
 	}
 	@Override
 	public int hashCode() {

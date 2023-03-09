@@ -3,6 +3,16 @@
 	<head>
 		<title>Join Channel</title>
 		<link rel="stylesheet" href="/css/welcome.css" type="text/css" />
+		<style>
+		 .delete{
+			
+			margin-top: 25px;
+			
+		}
+		 .sub{
+			 margin-top: 10px;
+		 }
+		</style>
 		<script>
 		var user = sessionStorage.getItem("user")
 		if (user == null) {
@@ -18,11 +28,11 @@
 	        	  sessionStorage.setItem('user', JSON.stringify(user));
 	          })
 		}else {
-			user = JSON.parse(sessionStorage.getITEM("user"))
+			user = JSON.parse(sessionStorage.getItem('user'))
+					
 			console.log(user)		
 		}
 		</script>
-		
 	</head>
 	<body>
 	
@@ -32,11 +42,18 @@
 			<a th:href="@{/channels/{channelId}(channelId=${channel.channelId})}">
 			<span th:text="${channel.name}"></span></a>
 		</div>
+		<div>
 		<form action="/addChannel" method="post">
-		 <div>
 		 	Add Channel <input type="text" th:field="${channel.name}">
+		 	<div class ="sub">
+			<input type="submit"  value="Add Channel    " />
+			</div>
+		</form>
 		</div>
-		<input type="submit" value="Start Your Channel" />
-	</form>
+		<div class="delete">
+		  <form action="/deleteChannel" method="post">
+			 <input type="submit"  value="Delete Channel"/>
+		  </form>
+		 </div>
 	</body>
 </html>
