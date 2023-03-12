@@ -15,11 +15,18 @@ public class ChannelRepository {
 	private LinkedList<Channel> channels = new LinkedList<>();
 	
 	public ChannelRepository () {
-		Channel general = new Channel();
-		general.setChannelId(1L);
-		general.setName("Main");
-		
-		channels.add(general);
+		Channel main = new Channel();
+		Channel main2 = new Channel();
+		Channel main3 = new Channel();
+		main.setChannelId(1L);
+		main2.setChannelId(2L);
+		main3.setChannelId(3L);
+		main.setName("Main Channel");
+		main2.setName("Second Channel");
+		main3.setName("Third Channel");
+		channels.add(main);
+		channels.add(main2);
+		channels.add(main3);
 	}
 	public Optional<Channel> findById (Long channelId) {
 		return channels.stream()
@@ -28,8 +35,11 @@ public class ChannelRepository {
 	}
 	public List<Channel> findAll() {
 		
-			System.out.println("Channel size is: " + channels.size());
-		
+		for(int i=0; i<channels.size()-1; i++) {
+			if(channels.size()-1 > 0) {
+			System.out.println("Channels are: " + channels.get(i));
+			}
+		}
 		return channels;
 	}
 	public void saveChannel(Channel channel) {
@@ -45,21 +55,15 @@ public class ChannelRepository {
 	public void deleteChannel() {
 	if(channels.size()>0) {
 		System.out.println("size" + channels.size());
-		
-		//long id = channels.size();
-		//long index = id;
-		//channel.setChannelId(index);
 		channels.remove();
-		System.out.println("Channels linklist size is now: " + channels.size());
-		
-			
+		System.out.println("Channels linklist size is now: " + channels.size());		
 		}	
 	}
-	
 	
 	public Channel getChannel(Long id) {
 		long l = id;
 		int index = (int)l;
 		return channels.get(index);
+		
 	}
 }

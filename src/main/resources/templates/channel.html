@@ -5,10 +5,9 @@
 		<script src="https://kit.fontawesome.com/02dccec1f3.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="/css/channel.css" type="text/css" />
 		<script th:inline="javascript">
-		/*<![CDATA[*/
-		    alert("Please be respectful in the chatBox!!")
+		/*<![CDATA[*/	
 		    let channelId = /*[[${channel.channelId}]]*/null;
-			let user = sessionStorage.getItem("user")
+			let user = sessionStorage.getItem("user")	
 			switch(user) {
 			case null:
 				window.location.href = '/welcome'

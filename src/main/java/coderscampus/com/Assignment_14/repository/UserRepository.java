@@ -15,12 +15,22 @@ public class UserRepository {
 	private ArrayList<RegisteredUsers> users = new ArrayList<>();
 	
 	public RegisteredUsers save(RegisteredUsers user) {
-		if (users.size() == 0) {
+//		if (users.size() == 0) {
+//			user.setId(1L);
+//		} else {
+//			RegisteredUsers EndParticipant = users.get(users.size()-1);
+//			user.setId(EndParticipant.getId() + 1L);
+//		}
+		int size = users.size();
+		switch(size) {
+		case 0:
 			user.setId(1L);
-		} else {
+			break;
+		default:
 			RegisteredUsers EndParticipant = users.get(users.size()-1);
 			user.setId(EndParticipant.getId() + 1L);
 		}
+		
 		users.add(user);
 		return user;
 		
