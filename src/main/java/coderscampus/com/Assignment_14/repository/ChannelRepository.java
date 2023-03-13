@@ -35,10 +35,10 @@ public class ChannelRepository {
 	}
 	public List<Channel> findAll() {
 		
-		for(int i=0; i<channels.size()-1; i++) {
-			if(channels.size()-1 > 0) {
+		for(int i=0; i<channels.size(); i++) {
+			
 			System.out.println("Channels are: " + channels.get(i));
-			}
+			
 		}
 		return channels;
 	}

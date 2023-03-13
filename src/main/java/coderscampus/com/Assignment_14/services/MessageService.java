@@ -24,8 +24,8 @@ public class MessageService {
 	
 	
 	
-	public List<Message> getMessagesByChannel (Long channelId) {
-		return messageRepo.findMessagesByChannel(channelId).orElse(new ArrayList<>());
+	public ArrayList<Message> getMessagesByChannel (Long channelId) {
+		return (ArrayList<Message>) messageRepo.findMessagesByChannel(channelId).orElse(new ArrayList<>());
 	}
 
 	public void addMessageToChannel(Message message) {
@@ -34,7 +34,7 @@ public class MessageService {
 		System.out.println("Id: " + message.getChannelId());
 		System.out.println("channelOpt is " + channelOpt.get());
 		if (channelOpt.isPresent()) {
-			List<Message> messagesByChannel = getMessagesByChannel(message.getChannelId());
+			ArrayList<Message> messagesByChannel = getMessagesByChannel(message.getChannelId());
 			messagesByChannel.add(message);
 			
 			messageRepo.saveMessagesByChannel(message.getChannelId(), messagesByChannel);

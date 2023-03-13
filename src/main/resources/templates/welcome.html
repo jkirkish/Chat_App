@@ -49,18 +49,16 @@
 		 	Add Channel <input type="text" th:field="${channel.name}">
 		 	<div class ="sub">
 			<input type="submit"  value="Add Channel    " />
+			  <p>"==>Type in the channel name and click Add Channel to add it to the list"</p>
 			</div>
 		</form>
-		<div>
-		  <p>"Type in the channel name and click Add Channel to add it to the list"</p>
-		 </div>
+	
 		</div>
 		<div class="delete">
 		  <form action="/deleteChannel" method="post">
 			 <input type="submit"  value="Delete Channel"/>
+			 <p>"==> Click the delete button to automatically delete a channel from the list"</p>
 		  </form>
-		  <div>
-		  <p>"Click the delete button to automatically delete a channel from the list"</p>
-		 </div>
+		  </div>
 	</body>
 </html>
