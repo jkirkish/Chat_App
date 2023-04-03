@@ -12,8 +12,8 @@ import coderscampus.com.Assignment_14.repository.ChannelRepository;
 @Service
 public class ChannelService {
 	
-	//@Autowired
-	//private ChannelRepository1 channelRepo;//Jpa Repository
+	
+	
 	
 	@Autowired
 	private ChannelRepository channelRepo;//class repository
@@ -30,7 +30,6 @@ public class ChannelService {
 
 	public void save(Channel channel) {
 		 channelRepo.saveChannel(channel);
-		//return channelRepo.save(channel);
 		
 	}
 

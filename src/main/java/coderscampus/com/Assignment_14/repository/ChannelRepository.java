@@ -35,28 +35,24 @@ public class ChannelRepository {
 	}
 	public List<Channel> findAll() {
 		
-		for(int i=0; i<channels.size(); i++) {
-			
-			System.out.println("Channels are: " + channels.get(i));
-			
-		}
+		
 		return channels;
 	}
 	public void saveChannel(Channel channel) {
 		if(!channel.getName().isEmpty()) {
-		System.out.println("size" + channels.size());
+		
 		int id = channels.size()+1;
 		long index = (long)id;
 		channel.setChannelId(index);
 		channels.add(channel);
-		System.out.println("Channels linklist size is now: " + channels.size());
+		
 		}
 	}
 	public void deleteChannel() {
 	if(channels.size()>0) {
-		System.out.println("size" + channels.size());
+		
 		channels.remove();
-		System.out.println("Channels linklist size is now: " + channels.size());		
+			
 		}	
 	}
 	

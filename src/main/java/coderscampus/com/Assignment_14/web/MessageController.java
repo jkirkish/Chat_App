@@ -20,7 +20,7 @@ public class MessageController {
 	@GetMapping("/messages/{channelId}")
 	public List<Message> getMessagesByChannelId (@PathVariable Long channelId) {
 		List<Message> channelMessages = messageService.getMessagesByChannel(channelId);
-		System.out.println("ChannelId " + messageService.getMessagesByChannel(channelId));
+		
 		
 		return channelMessages;
 	}
@@ -28,7 +28,7 @@ public class MessageController {
 	@PostMapping("/messages") 
 	public void postMessagesToUserId (@RequestBody Message message) {
 		messageService.addMessageToChannel(message);
-		System.out.println("Message is "  + message.getText());
+		
 	}
 	
 }

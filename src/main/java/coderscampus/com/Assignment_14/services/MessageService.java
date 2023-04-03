@@ -20,7 +20,7 @@ public class MessageService {
 	private MessageRepository messageRepo;
 	
 	@Autowired
-	private ChannelRepository channelRepo;
+	private ChannelService channelService;
 	
 	
 	
@@ -29,11 +29,8 @@ public class MessageService {
 	}
 
 	public void addMessageToChannel(Message message) {
-		Optional<Channel> channelOpt = channelRepo.findById(message.getChannelId());
-		System.out.println("addMessageTOchannel is:" + message.getText());
-		System.out.println("Id: " + message.getChannelId());
-		System.out.println("channelOpt is " + channelOpt.get());
-		if (channelOpt.isPresent()) {
+		Channel channelOpt = channelService.findChannelById(message.getChannelId());
+		if (channelOpt != null) {
 			ArrayList<Message> messagesByChannel = getMessagesByChannel(message.getChannelId());
 			messagesByChannel.add(message);
 			

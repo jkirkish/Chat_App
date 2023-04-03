@@ -23,7 +23,7 @@ public class ChannelController {
 	@Autowired
 	private MessageService messageService;
 	
-	private ChannelRepository chan = new ChannelRepository();
+	
 	
 	@GetMapping("/")
 	public String welcomeRedirect() {
@@ -32,7 +32,6 @@ public class ChannelController {
 	
 	@GetMapping("/channels/{channelId}")
 	public String getChannel(ModelMap model,@PathVariable Long channelId) {
-		List<Channel> channels = channelService.findAll();
 		Channel channel = channelService.findChannelById(channelId);
 		List<Message> messagesByChannel = messageService.getMessagesByChannel(channelId);
 		model.put("channel", channel);
